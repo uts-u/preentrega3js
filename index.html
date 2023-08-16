@@ -1,42 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
-  <title> Prespupuesto </title>
+  <title> Presupuesto para homestudio</title>
 </head>
 <body>
-  <div class="container">
-    <h1> Presupuesto para empezar a armar tu Homestudio </h1>
-    <form id="budget-form">
-      <label for="budget"> Cuánto podrias invertir, ingresa el monto en dólares  </label>
-      <input type="number" id="budget" name="budget" required>
-      <button type="submit"> Enviar </button>
+  <div class="contenedor">
+    <h1>Presupuesto para Homestudio</h1>
+    <form id="formulario-presupuesto">
+      <label for="presupuesto">¿Cuánto estás dispuesto a gastar?</label>
+      <input type="number" id="presupuesto" name="presupuesto" required>
+      <button type="submit">Calcular Opciones</button>
     </form>
-    <div id="result" class="hidden">
+    <div id="resultado" class="oculto">
       <h2>Opciones de Equipamiento:</h2>
-      <div id="option-1" class="option">
-        <h3> Equipamiento Básico</h3>
-        <p> Con este presupuesto podrias comprar una notebook y una placa de audio </p>
+      <div id="opcion-1" class="opcion">
+        <h3>Opción 1: Básico</h3>
       </div>
-      <div id="option-2" class="option">
-        <h3> Equipamiento Estándar</h3>
-        <p> Con este presupuesto podrias comprar una notebook, una placa de audio, un microfono shure sm-58 y monitores de estudio profesionales </p>
+      <div id="opcion-2" class="opcion">
+        <h3>Opción 2: Estándar</h3>
       </div>
-      <div id="option-3" class="option">
-        <h3> Equipamiento Avanzado</h3>
-        <p> Con este presupuesto podrias comprar una notebook, una placa de audio, un microfono shure sm-58, monitores de estudio profesionales y alguna maquina hardware: roland sp 404mk2 / mpc live 2/ octatrack mk2  </p>
+      <div id="opcion-3" class="opcion">
+        <h3>Opción 3: Avanzado</h3>
       </div>
-      <div id="option-4" class="option">
-        <h3>Equipamiento Profesional</h3>
-        <p> Con este presupuesto podrias comprar una notebook, una placa de audio, un microfono shure sm-58, monitores de estudio profesionales, alguna maquina hardware: roland sp 404mk2 / mpc live 2/ octatrack mk2 y distintos sintetizadores, eso depende de tu busqueda   </p>
+      <div id="opcion-4" class="opcion">
+        <h3>Opción 4: Profesional</h3>
       </div>
     </div>
-    <div id="cards-container" class="cards-container">
+    <div id="contenedor-tarjetas" class="contenedor-tarjetas">
     </div>
   </div>
   <script src="main.js"></script>
 </body>
 </html>
-

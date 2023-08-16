@@ -1,72 +1,72 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const budgetForm = document.getElementById('budget-form');
-  const resultContainer = document.getElementById('result');
-  const budgetInput = document.getElementById('budget');
-  const cardsContainer = document.getElementById('cards-container');
+  const formularioPresupuesto = document.getElementById('formulario-presupuesto');
+  const contenedorResultado = document.getElementById('resultado');
+  const inputPresupuesto = document.getElementById('presupuesto');
+  const contenedorTarjetas = document.getElementById('contenedor-tarjetas');
   
-  budgetForm.addEventListener('submit', function (event) {
-    event.preventDefault();
+  formularioPresupuesto.addEventListener('submit', function (evento) {
+    evento.preventDefault();
   
-    const budget = parseFloat(budgetInput.value);
+    const presupuesto = parseFloat(inputPresupuesto.value);
   
-    if (isNaN(budget)) {
-      alert('por favor introduce tu presupuesto (entre 500 y mas de 5000 dolares).');
+    if (isNaN(presupuesto)) {
+      alert('Por favor, introduzca el presupuesto dispuesto a gastar.');
       return;
     }
   
-    saveBudgetToLocalStorage(budget);
-    updateOptions(budget);
+    guardarPresupuestoEnLocalStorage(presupuesto);
+    actualizarOpciones(presupuesto);
   });
   
-  function saveBudgetToLocalStorage(budget) {
-    localStorage.setItem('homestudioBudget', budget);
+  function guardarPresupuestoEnLocalStorage(presupuesto) {
+    localStorage.setItem('presupuestoHomestudio', presupuesto);
   }
   
-  function loadBudgetFromLocalStorage() {
-    return parseFloat(localStorage.getItem('homestudioBudget'));
+  function cargarPresupuestoDesdeLocalStorage() {
+    return parseFloat(localStorage.getItem('presupuestoHomestudio'));
   }
   
-  function updateOptions(budget) {
-    resultContainer.classList.remove('hidden');
+  function actualizarOpciones(presupuesto) {
+    contenedorResultado.classList.remove('oculto');
   
-    const options = document.querySelectorAll('.option');
-    options.forEach(option => {
-      option.style.display = 'none';
+    const opciones = document.querySelectorAll('.opcion');
+    opciones.forEach(opcion => {
+      opcion.style.display = 'none';
     });
   
-    let optionId = '';
+    let idOpcion = '';
   
-    if (budget < 1000) {
-      optionId = 'option-1';
-      showAlertAndConsole("Homestudio basico", "Equipamiento básico");
-    } else if (budget >= 1000 && budget < 2000) {
-      optionId = 'option-2';
-      showAlertAndConsole("Homestudio Estandar", "Equipamiento estándar");
-    } else if (budget >= 2000 && budget < 5000) {
-      optionId = 'option-3';
-      showAlertAndConsole("homestudio avanzado", "Equipamiento avanzado");
+    if (presupuesto < 1000) {
+      idOpcion = 'opcion-1';
+      mostrarAlertaYConsola("Homestudio básico", "Equipamiento básico");
+    } else if (presupuesto >= 1000 && presupuesto < 2000) {
+      idOpcion = 'opcion-2';
+      mostrarAlertaYConsola("Homestudio estándar", "Equipamiento estándar");
+    } else if (presupuesto >= 2000 && presupuesto < 5000) {
+      idOpcion = 'opcion-3';
+      mostrarAlertaYConsola("Homestudio avanzado", "Equipamiento avanzado");
     } else {
-      optionId = 'option-4';
-      showAlertAndConsole("Homestudio profesional", "Equipamiento profesional");
+      idOpcion = 'opcion-4';
+      mostrarAlertaYConsola("Homestudio profesional", "Equipamiento profesional");
     }
   
-    const selectedOption = document.getElementById(optionId);
-    selectedOption.style.display = 'block';
+    const opcionSeleccionada = document.getElementById(idOpcion);
+    opcionSeleccionada.style.display = 'block';
   }
 
-  function showAlertAndConsole(alertText, consoleText) {
-    alert(alertText);
-    console.log(consoleText);
+  function mostrarAlertaYConsola(alertaTexto, consolaTexto) {
+    alert(alertaTexto);
+    console.log(consolaTexto);
 
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.textContent = consoleText;
-    cardsContainer.appendChild(card);
+    const tarjeta = document.createElement('div');
+    tarjeta.className = 'tarjeta';
+    tarjeta.textContent = consolaTexto;
+    contenedorTarjetas.appendChild(tarjeta);
   }
   
-  // Load budget from LocalStorage on page load
-  const savedBudget = loadBudgetFromLocalStorage();
-  if (!isNaN(savedBudget)) {
-    budgetInput.value = savedBudget;
+  // Cargar presupuesto desde LocalStorage al cargar la página
+  const presupuestoGuardado = cargarPresupuestoDesdeLocalStorage();
+  if (!isNaN(presupuestoGuardado)) {
+    inputPresupuesto.value = presupuestoGuardado;
   }
 });
